@@ -3,9 +3,7 @@ from typing import Dict
 
 class ExecutorAgent:
     def execute_trade(self, recommendation: Dict, user_id: str) -> Dict:
-        """Execute a trade based on the recommendation."""
         try:
-            # Handle both 'Symbol' and 'symbol'
             symbol_key = 'Symbol' if 'Symbol' in recommendation else 'symbol'
             if symbol_key not in recommendation:
                 logger.error(f"No symbol key in recommendation: {recommendation}")
