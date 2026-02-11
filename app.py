@@ -27,7 +27,7 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 # Page configuration
-st.set_page_config(page_title="💡 ThinkInvest", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="ThinkInvest", layout="wide", initial_sidebar_state="expanded")
 
 # Fetching API Keys
 NEWSAPI_KEY = st.secrets["NEWSAPI_KEY"]
@@ -385,8 +385,8 @@ if "authenticated" not in st.session_state:
 
 # Authentication UI
 if not st.session_state.authenticated:
-    st.markdown("<h1 class='header'>💡 ThinkInvest </h1>", unsafe_allow_html=True)
-    tab1, tab2 = st.tabs(["🔐 Sign In", "✨ Sign Up"])
+    st.markdown("<h1 class='header'> ThinkInvest </h1>", unsafe_allow_html=True)
+    tab1, tab2 = st.tabs(["Sign In", "Sign Up"])
     
     with tab1:
         with st.container():
@@ -434,7 +434,7 @@ else:
         news_endpoint()
     else:
         # Main application UI
-        st.markdown(f"<h1 class='header'>Welcome, {st.session_state.username}! 👋</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 class='header'>Welcome, {st.session_state.username}! </h1>", unsafe_allow_html=True)
         
         # Custom navigation sidebar
         st.sidebar.markdown("<h2 style='color: #ffffff;'>Navigation</h2>", unsafe_allow_html=True)
@@ -463,7 +463,7 @@ else:
 
         # Sign out button and balance
         with st.sidebar:
-            if st.button("🚪 Sign Out", use_container_width=True):
+            if st.button("Sign Out", use_container_width=True):
                 try:
                     st.session_state.authenticated = False
                     st.session_state.user_id = None
@@ -483,7 +483,7 @@ else:
 
         # Page content
         if page == "Home":
-            st.markdown("<h2 class='subheader'>📈 Stock Market Overview</h2>", unsafe_allow_html=True)
+            st.markdown("<h2 class='subheader'>Stock Market Overview</h2>", unsafe_allow_html=True)
             try:
                 logger.info("Fetching stock prices for Home page")
                 with st.spinner("Loading stock prices..."):
@@ -644,7 +644,7 @@ else:
                         st.success("Analysis complete!")
                         
                         # Display the agent's thinking process first
-                        with st.expander("🧠 Agent's Thought Process", expanded=True):
+                        with st.expander("Agent's Thought Process", expanded=True):
                             st.markdown("<h4 style='color: #ffffff;'>Inner Monologue</h4>", unsafe_allow_html=True)
                             for thought in result.get("thinking_process", []):
                                 st.markdown(f"<div class='thought-bubble'>{thought}</div>", unsafe_allow_html=True)
@@ -656,7 +656,7 @@ else:
                             st.markdown(f"<div class='analysis-box'>{insights_text}</div>", unsafe_allow_html=True)
                         
                         # Display analysis steps in a separate collapsible section
-                        with st.expander("📊 Analysis Steps", expanded=True):
+                        with st.expander("Analysis Steps", expanded=True):
                             st.markdown("<h4 style='color: #ffffff;'>Step-by-Step Analysis</h4>", unsafe_allow_html=True)
                             for step in result.get("reasoning_steps", []):
                                 if isinstance(step, str):
@@ -789,7 +789,7 @@ else:
                         except Exception as e:
                             logger.error(f"Failed to execute trade: {str(e)}")
                             st.error(f"""
-                            ❌ **Trade Execution Failed**
+                            **Trade Execution Failed**
                             
                             An error occurred while executing the trade: {str(e)}
                             Please try again or use manual trading if the issue persists.
@@ -797,7 +797,7 @@ else:
                     else:
                         st.warning("No valid trade recommendations generated. Please try again.")
         elif page == "Trade":
-            st.markdown("<h2 class='subheader'>💹 Trade Stocks</h2>", unsafe_allow_html=True)
+            st.markdown("<h2 class='subheader'>Trade Stocks</h2>", unsafe_allow_html=True)
             mode = st.radio("Trading Mode", ["Manual", "Agent-Based"])
             if mode == "Manual":
                 with st.form(key="manual_trade_form"):
@@ -1100,7 +1100,7 @@ else:
                                 except Exception as e:
                                     logger.error(f"Failed to execute trade: {str(e)}")
                                     st.error(f"""
-                                    ❌ **Trade Execution Failed**
+                                    **Trade Execution Failed**
                                     
                                     An error occurred while executing the trade: {str(e)}
                                     Please try again or use manual trading if the issue persists.
@@ -1112,7 +1112,7 @@ else:
                         st.error(f"Analysis failed: {str(e)}")
 
         elif page == "Portfolio":
-            st.markdown("<h2 class='subheader'>💼 Your Portfolio</h2>", unsafe_allow_html=True)
+            st.markdown("<h2 class='subheader'>Your Portfolio</h2>", unsafe_allow_html=True)
             st.markdown("<h3 style='color: #ffffff;'>Current Holdings</h3>", unsafe_allow_html=True)
             try:
                 logger.info(f"Fetching portfolio for user {st.session_state.user_id}")
